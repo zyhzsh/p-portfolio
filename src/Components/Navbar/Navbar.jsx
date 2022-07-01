@@ -5,7 +5,7 @@ import logo from '../../assets/img/logo.svg';
 import linkedinIcon from '../../assets/img/nav-icon-linkedin.svg';
 import githubIcon from '../../assets/img/nav-icon-github.svg';
 import hambergIcon from '../../assets/img/navbar-icon.svg';
-
+import xmarkIcon from '../../assets/img/navbar-icon-xmark.svg'
 const Navbar = () => {
   const navigationLinks = [
     {name:'Home',href:`#${Section.BANNER}`},
@@ -33,12 +33,11 @@ const Navbar = () => {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, [])
-
   return (
     <>
     <nav className={`${scrolled?'scrolled__nav':''}`}>
       <div className='nav__logo__container'>
-         <img src={logo} alt="Logo"/>
+       <a href='#home'><img src={logo} alt="Logo"/> </a> 
       </div>
       <div className='nav__links__container'>
       {navigationLinks.map((_,i)=>{
@@ -53,7 +52,7 @@ const Navbar = () => {
       })}
       </div>
       <div className='nav__links__container__mobile'>
-        <img className='menu__icon' onClick={()=>setDropDownOpen(open=>!open)} src={hambergIcon} alt='hambergIcon'/>
+        <img className='menu__icon' onClick={()=>setDropDownOpen(open=>!open)} src={dropDownOpen?xmarkIcon:hambergIcon} alt='hambergIcon'/>
       </div>
     </nav>
     <div className={`${dropDownOpen?'drop__down__nav__active':'drop__down__nav'} swing-in-top-fwd`}>
